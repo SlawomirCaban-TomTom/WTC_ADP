@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master_Page.master.cs"
+    Inherits="TomTom_Info_Page.Master_Page" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ Register TagPrefix="cc1" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>ADP Info Page</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">  
+        $(window).bind("load", function () {
+            var footer = $("#footer");
+            var pos = footer.position();
+            var height = $(window).height();
+            height = height - pos.top;
+            height = height - footer.height();
+            if (height > 0) {
+                footer.css({
+                    'margin-top': height + 'px'
+                });
+            }
+        });
+    </script>
+    <style type="text/css">
+        .auto-style1 {
+            width: 32px;
+            height: 33px;
+        }
+    </style>
+</head>
+<body>
+    <div id="overDiv" style="position: absolute; visibility: hidden; z-index: 1000;">
+    </div>
+    <div id="divContext" style="display: none; position: absolute; z-index: 255; background-color: #CCC;">
+        &nbsp;
+    </div>
+    <div id="divPopUpWindow" style="display: none; position: absolute; z-index: 256; background-color: #FFF;">
+        &nbsp;
+    </div>
+    <form id="form1" runat="server">
+        <cc1:ToolkitScriptManager runat="server"></cc1:ToolkitScriptManager>
+        <a href="/Start.aspx">
+            <img alt="Competence Center Info Page" src="/img/tt_logo.bmp" style="width: 193px; border: 0;" /></a>
+        <asp:Label ID="Label1" runat="server" Text="MAPS Operations ADP Information Page" Style="font-family: Arial, Helvetica, sans-serif; font-size: x-large; font-weight: 600;"></asp:Label>
+        <br />
+        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" BackColor="#F7F6F3"
+            DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#7C6F57"
+            StaticSubMenuIndent="10px" Font-Bold="True" OnMenuItemClick="Menu1_MenuItemClick">
+            <StaticSelectedStyle BackColor="#5D7B9D" />
+            <StaticMenuItemStyle HorizontalPadding="50px" VerticalPadding="2px" ItemSpacing="100px" />
+            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+            <DynamicMenuStyle BackColor="#F7F6F3" />
+            <DynamicSelectedStyle BackColor="#5D7B9D" />
+            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+            <Items>
+                <asp:MenuItem NavigateUrl="~/WTC/wtc_main.aspx" Text="WTC 5.0" Value="wtc"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/WTC/adp_activity.aspx" Text="Active ADP members" Value="aa"></asp:MenuItem>
+                <asp:MenuItem Text="Committer Controller" Value="cc">
+                     <asp:MenuItem NavigateUrl="~/cpp/cc.aspx" Text="Committer controller RPROD priority list" Value="CCr"></asp:MenuItem>                    
+                     <asp:MenuItem NavigateUrl="~/cpp/cc_india.aspx" Text="Committer controller India priority list" Value="CCi"></asp:MenuItem>
+                     <asp:MenuItem NavigateUrl="~/cpp/cc_skor.aspx" Text="Committer controller sKOR priority list" Value="CCk"></asp:MenuItem>
+                     <asp:MenuItem NavigateUrl="~/cpp/cc_readonly.aspx" Text="Commiter tools priority list read only" Value="ccrr"></asp:MenuItem>
+                    
+                </asp:MenuItem>
+                <asp:MenuItem Text="Dashboards" Value="dasboards">
+                    <asp:MenuItem NavigateUrl="~/cpp/mcr_import.aspx" Text="MCR import run" Value="MCR import run"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/mdsrefresher_dashboard_aws.aspx" Text="MDS refresher dashboard 03" Value="MDS refresher dashboard 03"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/mdsrefresher_dashboard_aws4.aspx" Text="MDS refresher dashboard 04" Value="MDS refresher dashboard 04"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/gradient_dashboard.aspx" Text="Gradient Dashboard" Value="Gradient Dashboard"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/height_dashboard.aspx" Text="Height Dashboard" Value="Height Dashboard"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/ts_dashboard.aspx" Text="TS Dashboard" Value="TS Dashboard"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/ts_dashboardKOR.aspx" Text="TS KOR Dashboard" Value="TS KOR Dashboard"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/slf_dashboard.aspx" Text="SLF Dashboard" Value="SLF Dashboard"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/slf_dashboard_kor.aspx" Text="SLF KOR Dashboard" Value="SLF KOR Dashboard"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/mpu_stats.aspx" Text="MPU Stats Overview 001 & 002" Value="MPU Stats Overview 001 & 002"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/mpu_stats_56.aspx" Text="MPU Stats Overview 005 & 006" Value="MPU Stats Overview 005 & 006"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/caj_dashboard_new.aspx" Text="CAJ Dashboard prod4" Value="CAJ Dashboard"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/cor_dashboard.aspx" Text="COR Dashboard" Value="COR Dashboard"></asp:MenuItem>
+                </asp:MenuItem>
+                 <asp:MenuItem Text="Tools" Value="tools">
+                    <asp:MenuItem NavigateUrl="~/cpp/bqa.aspx" Text="BQA support" Value="BQA support"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/yardtag.aspx" Text="YARD TAG" Value="YARD TAG"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/cpp/Iris_qa_preset.aspx" Text="IRIS Project QA preset" Value="Iris_qa_preset"></asp:MenuItem>
+                    
+                </asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/TEAMS/TEAMS_content.aspx" Text="Teams" Value="Teams"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="http://txchecker.maps-contentops.amiefarm.com/" Text="tx-checker" Value="tx-checker"></asp:MenuItem>
+
+            </Items>
+        </asp:Menu>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <div id="footer">
+            <h5 style="text-align: center;">Powered by ADP Lodz</h5>
+            <h5 style="text-align: center;">2022</h5>
+        </div>
+
+    </form>
+</body>
+</html>
+
+<!--  
+     <asp:MenuItem NavigateUrl="~/cpp/mdsrefresher_machines.aspx" Text="MDS refresher machines" Value="MDS refresher machines"></asp:MenuItem>
+     <asp:MenuItem NavigateUrl="~/cpp/caj_dashboard.aspx" Text="CAJ Dashboard prod3" Value="CAJ Dashboard"></asp:MenuItem>
+      <asp:MenuItem NavigateUrl="~/cpp/mdsrefresher_dashboard.aspx" Text="MDS refresher dashboard (old)" Value="MDS refresher dashboard (old)"></asp:MenuItem>
+    
+    <asp:MenuItem Text="INCA" Value="INCA">
+
+                <asp:MenuItem NavigateUrl="~/inca/inca_request_page.aspx" Text="Inca Request" Value="Inca Request">
+                </asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/temp/incastatus.aspx" Text="Inca Progress" Value="Inca Progress">
+                </asp:MenuItem>
+               <asp:MenuItem NavigateUrl="~/inca/Inca_automatic.aspx" 
+                    Text="Automatic INCA solving" Value="Automatic INCA solving"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/inca/inca_wms/inca_wms_login.aspx" 
+                    Text="INCA WMS" Value="INCA WMS"></asp:MenuItem>
+                 <asp:MenuItem NavigateUrl="~/inca/incasur.aspx" 
+                    Text="INCA Surroundings" Value="INCA Surr"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/biweekly.aspx" Text="BiWeekly Plan" Value="BiWeekly Plan"></asp:MenuItem>
+            </asp:MenuItem>
+       
+       
+  
+
+
+
+           <asp:MenuItem NavigateUrl="~/tsd_siebel.aspx" Text="JIRA TICKETS" Value="JIRA TICKETS">
+                             </asp:MenuItem>
+             <asp:MenuItem Text="Features Info" Value="Features Info">
+                <asp:MenuItem NavigateUrl="~/metadb/metadb.aspx" Text="MetaDB" Value="MetaDB"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/fred/dailylog.aspx" Text="MIS Daily Log" Value=""></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/seaming.aspx" Text="Seaming" Value="Seaming"></asp:MenuItem>
+            </asp:MenuItem>
+           
+       -->

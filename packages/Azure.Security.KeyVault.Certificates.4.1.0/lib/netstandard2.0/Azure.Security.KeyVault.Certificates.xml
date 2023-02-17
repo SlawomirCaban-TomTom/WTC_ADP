@@ -1,0 +1,2168 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Azure.Security.KeyVault.Certificates</name>
+    </assembly>
+    <members>
+        <member name="T:Azure.Security.KeyVault.Certificates.AdministratorContact">
+            <summary>
+            Details of an administrator of a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.AdministratorContact.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.AdministratorContact"/> class.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.AdministratorContact.Email">
+            <summary>
+            Gets or sets the email address of the administrator.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.AdministratorContact.FirstName">
+            <summary>
+            Gets or sets the first name of the administrator.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.AdministratorContact.LastName">
+            <summary>
+            Gets or sets the last name of the administrator.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.AdministratorContact.Phone">
+            <summary>
+            Gets or sets the phone number of the administrator.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateClient">
+            <summary>
+            The CertificateClient provides synchronous and asynchronous methods to manage <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>s in Azure Key Vault. The client
+            supports creating, retrieving, updating, deleting, purging, backing up, restoring, and listing the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>, along with managing
+            certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/>s and <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/>s. The client also supports listing <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/> for a soft delete
+            enabled key vault.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient"/> class for mocking.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.#ctor(System.Uri,Azure.Core.TokenCredential)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient"/> class for the specified vault.
+            </summary>
+            <param name="vaultUri">A <see cref="T:System.Uri"/> to the vault on which the client operates. Appears as "DNS Name" in the Azure portal.</param>
+            <param name="credential">A <see cref="T:Azure.Core.TokenCredential"/> used to authenticate requests to the vault, such as DefaultAzureCredential.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="vaultUri"/> or <paramref name="credential"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.#ctor(System.Uri,Azure.Core.TokenCredential,Azure.Security.KeyVault.Certificates.CertificateClientOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient"/> class for the specified vault.
+            </summary>
+            <param name="vaultUri">A <see cref="T:System.Uri"/> to the vault on which the client operates. Appears as "DNS Name" in the Azure portal.</param>
+            <param name="credential">A <see cref="T:Azure.Core.TokenCredential"/> used to authenticate requests to the vault, such as DefaultAzureCredential.</param>
+            <param name="options"><see cref="T:Azure.Security.KeyVault.Certificates.CertificateClientOptions"/> that allow to configure the management of the request sent to Key Vault.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="vaultUri"/> or <paramref name="credential"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateClient.VaultUri">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> of the vault used to create this instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartCreateCertificate(System.String,Azure.Security.KeyVault.Certificates.CertificatePolicy,System.Nullable{System.Boolean},System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Starts a long running operation to create a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> in the vault with the specified certificate policy.
+            </summary>
+            <remarks>
+            If no certificate with the specified name exists it will be created; otherwise, a new version of the existing certificate will be created.
+            This operation requires the certificates/create permission.
+            </remarks>
+            <param name="certificateName">The name of the certificate to create.</param>
+            <param name="policy">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> which governs the properties and lifecycle of the created certificate.</param>
+            <param name="enabled">Specifies whether the certificate should be created in an enabled state. If null, the server default will be used.</param>
+            <param name="tags">Tags to be applied to the created certificate.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> which contains details on the create operation, and can be used to retrieve updated status.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> or <paramref name="policy"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartCreateCertificateAsync(System.String,Azure.Security.KeyVault.Certificates.CertificatePolicy,System.Nullable{System.Boolean},System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">
+            <summary>
+            Starts a long running operation to create a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> in the vault with the specified certificate policy.
+            </summary>
+            <remarks>
+            If no certificate with the specified name exists it will be created; otherwise, a new version of the existing certificate will be created.
+            This operation requires the certificates/create permission.
+            </remarks>
+            <param name="certificateName">The name of the certificate to create.</param>
+            <param name="policy">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> which governs the properties and lifecycle of the created certificate.</param>
+            <param name="enabled">Specifies whether the certificate should be created in an enabled state. If null, the server default will be used.</param>
+            <param name="tags">Tags to be applied to the created certificate.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> which contains details on the create operation, and can be used to retrieve updated status.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> or <paramref name="policy"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificate(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the latest version of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> along with its <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/>. This operation requires the certificates/get permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to retrieve.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A response containing the certificate and policy as a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy"/> instance.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the latest version of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> along with its <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/>. This operation requires the certificates/get permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to retrieve.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A response containing the certificate and policy as a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy"/> instance.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificateVersion(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a specific version of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>. This operation requires the certificates/get permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to retrieve.</param>
+            <param name="version">The version of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to retrieve.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The requested <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificateVersionAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a specific version of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>. This operation requires the certificates/get permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to retrieve.</param>
+            <param name="version">The version of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to retrieve.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The requested <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.UpdateCertificateProperties(Azure.Security.KeyVault.Certificates.CertificateProperties,System.Threading.CancellationToken)">
+            <summary>
+            Updates the specified <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> with the specified values for its mutable properties. This operation requires the certificates/update permission.
+            </summary>
+            <param name="properties">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> object with updated properties.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The updated <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="properties"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.UpdateCertificatePropertiesAsync(Azure.Security.KeyVault.Certificates.CertificateProperties,System.Threading.CancellationToken)">
+            <summary>
+            Updates the specified <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> with the specified values for its mutable properties. This operation requires the certificates/update permission.
+            </summary>
+            <param name="properties">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> object with updated properties.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The updated <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="properties"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartDeleteCertificate(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes all versions of the specified <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>. If the vault is soft delete-enabled, the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> will be marked for permanent deletion
+            and can be recovered with <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartRecoverDeletedCertificate(System.String,System.Threading.CancellationToken)"/>, or purged with <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.PurgeDeletedCertificate(System.String,System.Threading.CancellationToken)"/>. This operation requires the certificates/delete permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to delete.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>
+            A <see cref="T:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation"/> to wait on this long-running operation.
+            If the Key Vault is soft delete-enabled, you only need to wait for the operation to complete if you need to recover or purge the certificate;
+            otherwise, the certificate is deleted automatically on the <see cref="P:Azure.Security.KeyVault.Certificates.DeletedCertificate.ScheduledPurgeDate"/>.
+            </returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartDeleteCertificateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes all versions of the specified <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>. If the vault is soft delete-enabled, the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> will be marked for permanent deletion
+            and can be recovered with <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartRecoverDeletedCertificate(System.String,System.Threading.CancellationToken)"/>, or purged with <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.PurgeDeletedCertificate(System.String,System.Threading.CancellationToken)"/>. This operation requires the certificates/delete permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to delete.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>
+            A <see cref="T:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation"/> to wait on this long-running operation.
+            If the Key Vault is soft delete-enabled, you only need to wait for the operation to complete if you need to recover or purge the certificate;
+            otherwise, the certificate is deleted automatically on the <see cref="P:Azure.Security.KeyVault.Certificates.DeletedCertificate.ScheduledPurgeDate"/>.
+            </returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetDeletedCertificate(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves information about the specified deleted <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>. This operation is only applicable in vaults enabled for soft delete, and
+            requires the certificates/get permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/>.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The details of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/>.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetDeletedCertificateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves information about the specified deleted <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>. This operation is only applicable in vaults enabled for soft delete, and
+            requires the certificates/get permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/>.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The details of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/>.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartRecoverDeletedCertificate(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Recovers the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/> to its pre-deleted state. This operation is only applicable in vaults enabled for soft delete, and
+            requires the certificates/recover permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/>.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation"/> to wait on this long-running operation.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartRecoverDeletedCertificateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Recovers the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/> to its pre-deleted state. This operation is only applicable in vaults enabled for soft delete, and
+            requires the certificates/recover permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/>.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation"/> to wait on this long-running operation.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.PurgeDeletedCertificate(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Permanently and irreversibly deletes the specified deleted certificate, without the possibility of recovery. This operation is only applicable in vaults enabled for soft delete, and
+            requires the certificates/purge permission. The operation is not available if the DeletedCertificate.RecoveryLevel of the DeletedCertificate does not specify 'Purgeable'.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/> to permanently delete.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The HTTP response from the service.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.PurgeDeletedCertificateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Permanently and irreversibly deletes the specified deleted certificate, without the possibility of recovery. This operation is only applicable in vaults enabled for soft delete, and
+            requires the certificates/purge permission. The operation is not available if the DeletedCertificate.RecoveryLevel of the DeletedCertificate does not specify 'Purgeable'.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/> to permanently delete.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The HTTP response from the service.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.BackupCertificate(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Creates a backup of the certificate, including all versions, which can be used to restore the certificate to the state at the time of the backup in the case the certificate is deleted, or to
+            restore the certificate to a different vault in the same region as the original value. This operation requires the certificate/backup permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to backup.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The certificate backup.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.BackupCertificateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Creates a backup of the certificate, including all versions, which can be used to restore the certificate to the state at the time of the backup in the case the certificate is deleted, or to
+            restore the certificate to a different vault in the same region as the original value. This operation requires the certificate/backup permission.
+            </summary>
+            <param name="certificateName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to backup.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The certificate backup.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.RestoreCertificateBackup(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Restores a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>, including all versions, from a backup created from the <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.BackupCertificate(System.String,System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.BackupCertificateAsync(System.String,System.Threading.CancellationToken)"/>. The backup must be restored
+            to a vault in the same region as its original vault. This operation requires the certificate/restore permission.
+            </summary>
+            <param name="backup">The backup of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to restore.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The restored certificate and policy.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="backup"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.RestoreCertificateBackupAsync(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Restores a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>, including all versions, from a backup created from the <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.BackupCertificate(System.String,System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.BackupCertificateAsync(System.String,System.Threading.CancellationToken)"/>. The backup must be restored
+            to a vault in the same region as its original vault. This operation requires the certificate/restore permission.
+            </summary>
+            <param name="backup">The backup of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> to restore.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The restored certificate and policy.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="backup"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.ImportCertificate(Azure.Security.KeyVault.Certificates.ImportCertificateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Imports a pre-existing certificate to the key vault. The specified certificate must be in PFX or ASCII PEM format, and must contain the private key as well as the X.509 certificates. This operation requires the
+            certificates/import permission.
+            </summary>
+            <param name="importCertificateOptions">The details of the certificate to import to the key vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The imported certificate and policy.</returns>
+            <exception cref="T:System.ArgumentException"><see cref="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Name"/> of <paramref name="importCertificateOptions"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="importCertificateOptions"/> or <see cref="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Name"/> of <paramref name="importCertificateOptions"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.ImportCertificateAsync(Azure.Security.KeyVault.Certificates.ImportCertificateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Imports a pre-existing certificate to the key vault. The specified certificate must be in PFX or ASCII PEM format, and must contain the private key as well as the X.509 certificates. This operation requires the
+            certificates/import permission.
+            </summary>
+            <param name="importCertificateOptions">The details of the certificate to import to the key vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The imported certificate and policy.</returns>
+            <exception cref="T:System.ArgumentException"><see cref="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Name"/> of <paramref name="importCertificateOptions"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="importCertificateOptions"/> or <see cref="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Name"/> of <paramref name="importCertificateOptions"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetPropertiesOfCertificates(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all certificates in the specified vault. You can use the returned <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificate(System.String,System.Threading.CancellationToken)"/>.
+            This operation requires the certificates/list permission.
+            </summary>
+            <param name="includePending">Specifies whether to include certificates in a pending state as well.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>An enumerable collection of certificate metadata.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetPropertiesOfCertificatesAsync(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all certificates in the specified vault. You can use the returned <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificate(System.String,System.Threading.CancellationToken)"/>.
+            This operation requires the certificates/list permission.
+            </summary>
+            <param name="includePending">Specifies whether to include certificates in a pending state as well.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>An enumerable collection of certificate metadata.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetPropertiesOfCertificateVersions(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all versions of the specified certificate in the specified vault. You can use the returned <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificateVersion(System.String,System.String,System.Threading.CancellationToken)"/>.
+            This operation requires the certificates/list permission.
+            </summary>
+            <param name="certificateName">The name of the certificate whose versions should be retrieved.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>An enumerable collection of the certificate's versions.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetPropertiesOfCertificateVersionsAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all versions of the specified certificate in the specified vault. You can use the returned <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificateVersion(System.String,System.String,System.Threading.CancellationToken)"/>.
+            This operation requires the certificates/list permission.
+            </summary>
+            <param name="certificateName">The name of the certificate whose versions should be retrieved.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>An enumerable collection of the certificate's versions.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetDeletedCertificates(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Enumerates the deleted certificates in the vault. This operation is only available on soft delete-enabled vaults, and requires the certificates/list/get permissions.
+            </summary>
+            <param name="includePending">Specifies whether to include certificates in a delete pending state as well.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>An enumerable collection of deleted certificates.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetDeletedCertificatesAsync(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Enumerates the deleted certificates in the vault. This operation is only available on soft delete-enabled vaults, and requires the certificates/list/get permissions.
+            </summary>
+            <param name="includePending">Specifies whether to include certificates in a delete pending state as well.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>An enumerable collection of deleted certificates.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificatePolicy(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> of the specified certificate. This operation requires the certificate/get permission.
+            </summary>
+            <param name="certificateName">The name of the certificate whose policy should be retrieved.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> of the specified certificate.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificatePolicyAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> of the specified certificate. This operation requires the certificate/get permission.
+            </summary>
+            <param name="certificateName">The name of the certificate whose policy should be retrieved.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> of the specified certificate.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.UpdateCertificatePolicy(System.String,Azure.Security.KeyVault.Certificates.CertificatePolicy,System.Threading.CancellationToken)">
+            <summary>
+            Updates the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> of the specified certificate. This operation requires the certificate/update permission.
+            </summary>
+            <param name="certificateName">The name of the certificate whose policy should be updated.</param>
+            <param name="policy">The updated policy for the specified certificate.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The updated certificate policy.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.UpdateCertificatePolicyAsync(System.String,Azure.Security.KeyVault.Certificates.CertificatePolicy,System.Threading.CancellationToken)">
+            <summary>
+            Updates the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> of the specified certificate. This operation requires the certificate/update permission.
+            </summary>
+            <param name="certificateName">The name of the certificate whose policy should be updated.</param>
+            <param name="policy">The updated policy for the specified certificate.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The updated certificate policy.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.CreateIssuer(Azure.Security.KeyVault.Certificates.CertificateIssuer,System.Threading.CancellationToken)">
+            <summary>
+            Creates or replaces a certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> in the key vault. This operation requires the certificates/setissuers permission.
+            </summary>
+            <param name="issuer">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> to add or replace in the vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The created certificate issuer.</returns>
+            <exception cref="T:System.ArgumentException"><see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/> of <paramref name="issuer"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="issuer"/> or <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/> of <paramref name="issuer"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.CreateIssuerAsync(Azure.Security.KeyVault.Certificates.CertificateIssuer,System.Threading.CancellationToken)">
+            <summary>
+            Creates or replaces a certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> in the key vault. This operation requires the certificates/setissuers permission.
+            </summary>
+            <param name="issuer">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> to add or replace in the vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The created certificate issuer.</returns>
+            <exception cref="T:System.ArgumentException"><see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/> of <paramref name="issuer"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="issuer"/> or <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/> of <paramref name="issuer"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetIssuer(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the specified certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> from the vault. This operation requires the certificates/getissuers permission.
+            </summary>
+            <param name="issuerName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> to retrieve.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The retrieved certificate issuer.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="issuerName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="issuerName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetIssuerAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the specified certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> from the vault. This operation requires the certificates/getissuers permission.
+            </summary>
+            <param name="issuerName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> to retrieve.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The retrieved certificate issuer.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="issuerName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="issuerName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.UpdateIssuer(Azure.Security.KeyVault.Certificates.CertificateIssuer,System.Threading.CancellationToken)">
+            <summary>
+            Updates the specified certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> in the vault, only updating the specified fields, others will remain unchanged. This operation requires the certificates/setissuers permission.
+            </summary>
+            <param name="issuer">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> to update in the vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The updated certificate issuer.</returns>
+            <exception cref="T:System.ArgumentException"><see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/> of <paramref name="issuer"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="issuer"/> or <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/> of <paramref name="issuer"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.UpdateIssuerAsync(Azure.Security.KeyVault.Certificates.CertificateIssuer,System.Threading.CancellationToken)">
+            <summary>
+            Updates the specified certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> in the vault, only updating the specified fields, others will remain unchanged. This operation requires the certificates/setissuers permission.
+            </summary>
+            <param name="issuer">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> to update in the vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The updated certificate issuer.</returns>
+            <exception cref="T:System.ArgumentException"><see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/> of <paramref name="issuer"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="issuer"/> or <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/> of <paramref name="issuer"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.DeleteIssuer(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the specified certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> from the vault. This operation requires the certificates/deleteissuers permission.
+            </summary>
+            <param name="issuerName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> to delete.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The deleted certificate issuer.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="issuerName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="issuerName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.DeleteIssuerAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the specified certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> from the vault. This operation requires the certificates/deleteissuers permission.
+            </summary>
+            <param name="issuerName">The name of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> to delete.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The deleted certificate issuer.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="issuerName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="issuerName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetPropertiesOfIssuers(System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all issuers in the specified vault. You can use the returned <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetIssuer(System.String,System.Threading.CancellationToken)"/>.
+            This operation requires the certificates/getissuers permission.
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>An enumerable collection of certificate issuers' metadata.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetPropertiesOfIssuersAsync(System.Threading.CancellationToken)">
+            <summary>
+            Lists the properties of all issuers in the specified vault. You can use the returned <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name"/> in subsequent calls to <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetIssuer(System.String,System.Threading.CancellationToken)"/>.
+            This operation requires the certificates/getissuers permission.
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>An enumerable collection of certificate issuers' metadata.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificateOperation(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a pending <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> from the key vault. This operation requires the certificates/get permission.
+            </summary>
+            <param name="certificateName">The name of the certificate for which an operation is pending.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The given certificate's current pending operation.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetCertificateOperationAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a pending <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> from the key vault. This operation requires the certificates/get permission.
+            </summary>
+            <param name="certificateName">The name of the certificate for which an operation is pending.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The given certificate's current pending operation.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="certificateName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="certificateName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.SetContacts(System.Collections.Generic.IEnumerable{Azure.Security.KeyVault.Certificates.CertificateContact},System.Threading.CancellationToken)">
+            <summary>
+            Sets the certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/>s for the key vault, replacing any existing contacts. This operation requires the certificates/managecontacts permission.
+            </summary>
+            <param name="contacts">The certificate contacts for the vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The updated certificate contacts of the vault.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="contacts"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.SetContactsAsync(System.Collections.Generic.IEnumerable{Azure.Security.KeyVault.Certificates.CertificateContact},System.Threading.CancellationToken)">
+            <summary>
+            Sets the certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/>s for the key vault, replacing any existing contacts. This operation requires the certificates/managecontacts permission.
+            </summary>
+            <param name="contacts">The certificate contacts for the vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The updated certificate contacts of the vault.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="contacts"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetContacts(System.Threading.CancellationToken)">
+            <summary>
+            Gets the certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/>s for the key vaults. This operation requires the certificates/managecontacts permission.
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The certificate contacts of the vault.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.GetContactsAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets the certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/>s for the key vaults. This operation requires the certificates/managecontacts permission.
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The certificate contacts of the vault.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.DeleteContacts(System.Threading.CancellationToken)">
+            <summary>
+            Deletes all certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/>s from the key vault, replacing any existing contacts. This operation requires the certificates/managecontacts permission.
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The certificate contacts deleted from the vault.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.DeleteContactsAsync(System.Threading.CancellationToken)">
+            <summary>
+            Deletes all certificate <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/>s from the key vault, replacing any existing contacts. This operation requires the certificates/managecontacts permission.
+            </summary>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The certificate contacts deleted from the vault.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.MergeCertificate(Azure.Security.KeyVault.Certificates.MergeCertificateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Merges a certificate or a certificate chain with a key pair currently available in the service. This operation requires the certificate/create permission.
+            </summary>
+            <param name="mergeCertificateOptions">The details of the certificate or certificate chain to merge into the key vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The merged certificate.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="mergeCertificateOptions"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClient.MergeCertificateAsync(Azure.Security.KeyVault.Certificates.MergeCertificateOptions,System.Threading.CancellationToken)">
+            <summary>
+            Merges a certificate or a certificate chain with a key pair currently available in the service. This operation requires the certificate/create permission.
+            </summary>
+            <param name="mergeCertificateOptions">The details of the certificate or certificate chain to merge into the key vault.</param>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The merged certificate.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="mergeCertificateOptions"/> is null.</exception>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateClientOptions">
+            <summary>
+            Options that allow you to configure the requests sent to Key Vault.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Certificates.CertificateClientOptions.LatestVersion">
+            <summary>
+            The latest service version supported by this client library.
+            For more information, see
+            <see href="https://docs.microsoft.com/en-us/rest/api/keyvault/key-vault-versions"/>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion">
+            <summary>
+            The versions of Azure Key Vault supported by this client
+            library.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion.V7_0">
+            <summary>
+            The Key Vault API version 7.0.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion.V7_1">
+            <summary>
+            They Key Vault API version 7.1.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateClientOptions.Version">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion"/> of the service API used when
+            making requests. For more information, see
+            <see href="https://docs.microsoft.com/en-us/rest/api/keyvault/key-vault-versions"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateClientOptions.#ctor(Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClientOptions"/>
+            class.
+            </summary>
+            <param name="version">
+            The <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClientOptions.ServiceVersion"/> of the service API used when
+            making requests.
+            </param>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateContact">
+            <summary>
+            A contact for certificate management issues for a key vault.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContact.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/> class.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateContact.Email">
+            <summary>
+            Gets or sets the email address of the contact.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateContact.Name">
+            <summary>
+            Gets or sets the name of the contact.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateContact.Phone">
+            <summary>
+            Gets or sets the phone number of the contact.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateContentType">
+            <summary>
+            Content type of the certificate when downloaded from getSecret.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContentType.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateContentType.Pkcs12">
+            <summary>
+            Gets a value indicating that content is downloaded in pkcs12 (PFX) format.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateContentType.Pem">
+            <summary>
+            Gets a value indicating that content is downloaded in PEM format.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContentType.op_Equality(Azure.Security.KeyVault.Certificates.CertificateContentType,Azure.Security.KeyVault.Certificates.CertificateContentType)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContentType.op_Inequality(Azure.Security.KeyVault.Certificates.CertificateContentType,Azure.Security.KeyVault.Certificates.CertificateContentType)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContentType.op_Implicit(System.String)~Azure.Security.KeyVault.Certificates.CertificateContentType">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContentType.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContentType.Equals(Azure.Security.KeyVault.Certificates.CertificateContentType)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContentType.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateContentType.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateIssuer">
+            <summary>
+            A certificate issuer used to sign certificates managed by Azure Key Vault.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateIssuer.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> class.
+            You can use this constructor to initialize a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> for
+            <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.UpdateIssuer(Azure.Security.KeyVault.Certificates.CertificateIssuer,System.Threading.CancellationToken)"/> or
+            <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.UpdateIssuerAsync(Azure.Security.KeyVault.Certificates.CertificateIssuer,System.Threading.CancellationToken)"/>.
+            </summary>
+            <param name="name">The name of the issuer, including values from <see cref="T:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames"/>.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateIssuer.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> class.
+            You can use this constructor to initialize a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> for
+            <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.CreateIssuer(Azure.Security.KeyVault.Certificates.CertificateIssuer,System.Threading.CancellationToken)"/> or
+            <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.CreateIssuerAsync(Azure.Security.KeyVault.Certificates.CertificateIssuer,System.Threading.CancellationToken)"/>.
+            </summary>
+            <param name="name">The name of the issuer, including values from <see cref="T:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames"/>.</param>
+            <param name="provider">The provider name of the certificate issuer.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> or <paramref name="provider"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="provider"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Id">
+            <summary>
+            Gets the unique identifier of the certificate issuer.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name">
+            <summary>
+            Gets the name of the certificate issuer.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Provider">
+            <summary>
+            Gets or sets the provider name of the certificate issuer.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.AccountId">
+            <summary>
+            Gets or sets the account identifier or username used to authenticate to the certificate issuer.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Password">
+            <summary>
+            Gets or sets the password or key used to authenticate to the certificate issuer.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.OrganizationId">
+            <summary>
+            Gets or sets the organizational identifier for the issuer.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.AdministratorContacts">
+            <summary>
+            Gets a list of contacts who administer the certificate issuer account.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.CreatedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate was created.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.UpdatedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate was updated.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the issuer can currently be used to issue certificates. If null, the server default will be used.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName">
+            <summary>
+            Elliptic Curve Cryptography (ECC) curve names.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.P256">
+            <summary>
+            Gets the NIST P-256 elliptic curve, AKA SECG curve SECP256R1
+            For more information, see <see href="https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#curve-types"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.P384">
+            <summary>
+            Gets the NIST P-384 elliptic curve, AKA SECG curve SECP384R1.
+            For more information, see <see href="https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#curve-types"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.P521">
+            <summary>
+            Gets the NIST P-521 elliptic curve, AKA SECG curve SECP521R1.
+            For more information, see <see href="https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#curve-types"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.P256K">
+            <summary>
+            Gets the SECG SECP256K1 elliptic curve.
+            For more information, see <see href="https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#curve-types"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.op_Equality(Azure.Security.KeyVault.Certificates.CertificateKeyCurveName,Azure.Security.KeyVault.Certificates.CertificateKeyCurveName)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.op_Inequality(Azure.Security.KeyVault.Certificates.CertificateKeyCurveName,Azure.Security.KeyVault.Certificates.CertificateKeyCurveName)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.op_Implicit(System.String)~Azure.Security.KeyVault.Certificates.CertificateKeyCurveName">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.Equals(Azure.Security.KeyVault.Certificates.CertificateKeyCurveName)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyCurveName.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateKeyType">
+            <summary>
+            Supported JsonWebKey key types (kty)
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyType.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyType"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyType.Ec">
+            <summary>
+            An Elliptic Curve Cryptographic (ECC) algorithm.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyType.EcHsm">
+            <summary>
+            An Elliptic Curve Cryptographic (ECC) algorithm backed by HSM.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyType.Rsa">
+            <summary>
+            An RSA cryptographic algorithm.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyType.RsaHsm">
+            <summary>
+            An RSA cryptographic algorithm backed by HSM.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyType.op_Equality(Azure.Security.KeyVault.Certificates.CertificateKeyType,Azure.Security.KeyVault.Certificates.CertificateKeyType)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyType"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyType"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyType"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyType.op_Inequality(Azure.Security.KeyVault.Certificates.CertificateKeyType,Azure.Security.KeyVault.Certificates.CertificateKeyType)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyType"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyType"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyType"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyType.op_Implicit(System.String)~Azure.Security.KeyVault.Certificates.CertificateKeyType">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyType"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyType.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyType.Equals(Azure.Security.KeyVault.Certificates.CertificateKeyType)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyType.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyType.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage">
+            <summary>
+            Supported usages of a certificate key.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.DigitalSignature">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used as a digital signatures.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.NonRepudiation">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used for authentication.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.KeyEncipherment">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used for key encryption.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.DataEncipherment">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used for data encryption.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.KeyAgreement">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used to determine key agreement, such as a key created using the Diffie-Hellman key agreement algorithm.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.KeyCertSign">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used to sign certificates.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.CrlSign">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used to sign a certificate revocation list.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.EncipherOnly">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used for encryption only.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.DecipherOnly">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> indicating that the certificate key can be used for decryption only.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.op_Equality(Azure.Security.KeyVault.Certificates.CertificateKeyUsage,Azure.Security.KeyVault.Certificates.CertificateKeyUsage)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.op_Inequality(Azure.Security.KeyVault.Certificates.CertificateKeyUsage,Azure.Security.KeyVault.Certificates.CertificateKeyUsage)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.op_Implicit(System.String)~Azure.Security.KeyVault.Certificates.CertificateKeyUsage">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateKeyUsage"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.Equals(Azure.Security.KeyVault.Certificates.CertificateKeyUsage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateKeyUsage.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateModelFactory">
+            <summary>
+            Model factory that enables mocking for the Key Vault Certificates library.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.IssuerProperties(System.Uri,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.IssuerProperties"/> for mocking purposes.
+            </summary>
+            <param name="id">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.IssuerProperties.Id"/> property.</param>
+            <param name="name">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.IssuerProperties.Name"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.IssuerProperties"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.CertificateIssuer(Azure.Security.KeyVault.Certificates.IssuerProperties,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> for mocking purposes.
+            </summary>
+            <param name="properties">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Id"/>, <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Name"/>, and <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.Provider"/> properties.</param>
+            <param name="createdOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.CreatedOn"/> property.</param>
+            <param name="updatedOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateIssuer.UpdatedOn"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.CertificateOperationError(System.String,System.String,Azure.Security.KeyVault.Certificates.CertificateOperationError)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperationError"/> for mocking purposes.
+            </summary>
+            <param name="code">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationError.Code"/> property.</param>
+            <param name="message">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationError.Message"/> property.</param>
+            <param name="innerError">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationError.InnerError"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperationError"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.CertificateOperationProperties(System.Uri,System.String,System.Uri,System.String,System.String,System.Nullable{System.Boolean},System.Byte[],System.Boolean,System.String,System.String,System.String,System.String,Azure.Security.KeyVault.Certificates.CertificateOperationError)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperationProperties"/> for mocking purposes.
+            </summary>
+            <param name="id">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Id"/> property.</param>
+            <param name="name">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Name"/> property.</param>
+            <param name="vaultUri">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.VaultUri"/> property.</param>
+            <param name="issuerName">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.IssuerName"/> property.</param>
+            <param name="certificateType">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.CertificateType"/> property.</param>
+            <param name="certificateTransparency">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.CertificateTransparency"/> property.</param>
+            <param name="csr">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Csr"/> property.</param>
+            <param name="cancellationRequested">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.CancellationRequested"/> property.</param>
+            <param name="requestId">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.RequestId"/> property.</param>
+            <param name="status">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Status"/> property.</param>
+            <param name="statusDetails">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.StatusDetails"/> property.</param>
+            <param name="target">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Target"/> property.</param>
+            <param name="error">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Error"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperationProperties"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.CertificatePolicy(System.String,Azure.Security.KeyVault.Certificates.SubjectAlternativeNames,System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> for mocking purposes.
+            </summary>
+            <param name="subject">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.Subject"/> property.</param>
+            <param name="subjectAlternativeNames">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.SubjectAlternativeNames"/> property.</param>
+            <param name="issuerName">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.IssuerName"/> property.</param>
+            <param name="createdOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.CreatedOn"/> property.</param>
+            <param name="updatedOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.UpdatedOn"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.CertificateProperties(System.Uri,System.String,System.Uri,System.String,System.Byte[],System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> for mocking purposes.
+            </summary>
+            <param name="id">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Id"/> property.</param>
+            <param name="name">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name"/> property.</param>
+            <param name="vaultUri">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.VaultUri"/> property.</param>
+            <param name="version">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Version"/> property.</param>
+            <param name="x509thumbprint">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.X509Thumbprint"/> property.</param>
+            <param name="notBefore">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.NotBefore"/> property.</param>
+            <param name="expiresOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.ExpiresOn"/> property.</param>
+            <param name="createdOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.CreatedOn"/> property.</param>
+            <param name="updatedOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.UpdatedOn"/> property.</param>
+            <param name="recoveryLevel">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.RecoveryLevel"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.CertificateProperties(System.Uri,System.String,System.Uri,System.String,System.Byte[],System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> for mocking purposes.
+            </summary>
+            <param name="id">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Id"/> property.</param>
+            <param name="name">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name"/> property.</param>
+            <param name="vaultUri">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.VaultUri"/> property.</param>
+            <param name="version">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Version"/> property.</param>
+            <param name="x509thumbprint">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.X509Thumbprint"/> property.</param>
+            <param name="notBefore">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.NotBefore"/> property.</param>
+            <param name="expiresOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.ExpiresOn"/> property.</param>
+            <param name="createdOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.CreatedOn"/> property.</param>
+            <param name="updatedOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.UpdatedOn"/> property.</param>
+            <param name="recoveryLevel">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.RecoveryLevel"/> property.</param>
+            <param name="recoverableDays">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateProperties.RecoverableDays"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.DeletedCertificate(Azure.Security.KeyVault.Certificates.CertificateProperties,System.Uri,System.Uri,System.Byte[],Azure.Security.KeyVault.Certificates.CertificatePolicy,System.Uri,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/> for mocking purposes.
+            </summary>
+            <param name="properties">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Properties"/> property.</param>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.KeyId"/> property.</param>
+            <param name="secretId">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.SecretId"/> property.</param>
+            <param name="cer">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Cer"/> property.</param>
+            <param name="policy">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy.Policy"/> property.</param>
+            <param name="recoveryId">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.DeletedCertificate.RecoveryId"/> property.</param>
+            <param name="deletedOn">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.DeletedCertificate.DeletedOn"/> property.</param>
+            <param name="scheduledPurgeDate">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.DeletedCertificate.ScheduledPurgeDate"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.KeyVaultCertificate(Azure.Security.KeyVault.Certificates.CertificateProperties,System.Uri,System.Uri,System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> for mocking purposes.
+            </summary>
+            <param name="properties">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Properties"/> property.</param>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.KeyId"/> property.</param>
+            <param name="secretId">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.SecretId"/> property.</param>
+            <param name="cer">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Cer"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> for mocking purposes.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateModelFactory.KeyVaultCertificateWithPolicy(Azure.Security.KeyVault.Certificates.CertificateProperties,System.Uri,System.Uri,System.Byte[],Azure.Security.KeyVault.Certificates.CertificatePolicy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy"/> for mocking purposes.
+            </summary>
+            <param name="properties">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Properties"/> property.</param>
+            <param name="keyId">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.KeyId"/> property.</param>
+            <param name="secretId">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.SecretId"/> property.</param>
+            <param name="cer">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Cer"/> property.</param>
+            <param name="policy">Sets the <see cref="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy.Policy"/> property.</param>
+            <returns>A new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy"/> for mocking purposes.</returns>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateOperation">
+            <summary>
+            A long running poller operation which can be used to track the status of a pending key vault certificate operation.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.#ctor(Azure.Security.KeyVault.Certificates.CertificateClient,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> class.
+            You must call <see cref="M:Azure.Security.KeyVault.Certificates.CertificateOperation.UpdateStatus(System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Certificates.CertificateOperation.UpdateStatusAsync(System.Threading.CancellationToken)"/> before you can get the <see cref="P:Azure.Security.KeyVault.Certificates.CertificateOperation.Value"/>.
+            </summary>
+            <param name="client">A <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient"/> for the Key Vault where the operation was started.</param>
+            <param name="name">The name of the certificate being created.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperation.Properties">
+            <summary>
+            Gets the properties of the pending certificate operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperation.HasCompleted">
+            <summary>
+            Gets a value indicating whether the operation has reached a terminal state.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperation.HasValue">
+            <summary>
+            Gets a value indicating whether the Value property can be safely accessed.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperation.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperation.Value">
+            <inheritdoc />
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.GetRawResponse">
+            <inheritdoc />
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.WaitForCompletionAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.WaitForCompletionAsync(System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.UpdateStatus(System.Threading.CancellationToken)">
+            <summary>
+            Updates the status of the certificate operation.
+            This operation requires the certificates/get permission.
+            </summary>
+            <remarks>
+            This operation requires the certificates/get permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The raw response of the poll operation.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.UpdateStatusAsync(System.Threading.CancellationToken)">
+            <summary>
+            Updates the status of the certificate operation.
+            </summary>
+            <remarks>
+            This operation requires the certificates/get permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>The raw response of the poll operation.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.Cancel(System.Threading.CancellationToken)">
+            <summary>
+            Cancels a pending <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> in the key vault. This operation requires the certificates/update permission.
+            </summary>
+            <remarks>
+            This operation requires the certificates/update permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.CancelAsync(System.Threading.CancellationToken)">
+            <summary>
+            Cancels a pending <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> in the key vault. This operation requires the certificates/update permission.
+            </summary>
+            <remarks>
+            This operation requires the certificates/update permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> to track the service request.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.Delete(System.Threading.CancellationToken)">
+            <summary>
+            Deletes a pending <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> in the key vault. This operation requires the certificates/delete permission.
+            </summary>
+            <remarks>
+            This operation requires the certificates/update permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateOperation.DeleteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Deletes a pending <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/> in the key vault. This operation requires the certificates/delete permission.
+            </summary>
+            <remarks>
+            This operation requires the certificates/update permission.
+            </remarks>
+            <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken"/> controlling the request lifetime.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> to track the service request.</returns>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateOperationError">
+            <summary>
+            An error encountered during the processing of a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateOperation"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationError.Code">
+            <summary>
+            Gets the error code of the specified error.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationError.Message">
+            <summary>
+            Gets a message containing details of the encountered error.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationError.InnerError">
+            <summary>
+            Gets an underlying error - if one exists - for the current error.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateOperationProperties">
+            <summary>
+            Properties pertaining to the status of a certificate operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Id">
+            <summary>
+            Gets the identifier of the certificate operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Name">
+            <summary>
+            Gets the name of the certificate to which the operation applies.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.VaultUri">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> of the vault executing the certificate operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.IssuerName">
+            <summary>
+            Gets the name of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/> for the certificate to create.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.CertificateType">
+            <summary>
+            Gets the type of the certificate to create.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.CertificateTransparency">
+            <summary>
+            Gets a value indicating whether the certificate will be published to the certificate transparency list when created.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Csr">
+            <summary>
+            Gets the certificate signing request (CSR) that is being used in the certificate operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.CancellationRequested">
+            <summary>
+            Gets a value indicating whether a cancellation has been requested for the operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.RequestId">
+            <summary>
+            Gets the request identifier of the certificate operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Status">
+            <summary>
+            Gets the current status of the operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.StatusDetails">
+            <summary>
+            Gets extended details on the status of the operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Target">
+            <summary>
+            Gets the location which will contain the result of the certificate operation.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateOperationProperties.Error">
+            <summary>
+            Gets any errors encountered during the processing of the certificate operation.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificatePolicy">
+            <summary>
+            A policy which governs the lifecycle a properties of a certificate managed by Azure Key Vault.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicy.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> class.
+            </summary>
+            <param name="issuerName">The name of an issuer for the certificate, including values from <see cref="T:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames"/>.</param>
+            <param name="subject">The subject name of the certificate, such as "CN=contoso.com".</param>
+            <exception cref="T:System.ArgumentException"><paramref name="subject"/> or <paramref name="issuerName"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="subject"/> or <paramref name="issuerName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicy.#ctor(System.String,Azure.Security.KeyVault.Certificates.SubjectAlternativeNames)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> class.
+            </summary>
+            <param name="issuerName">The name of an issuer for the certificate, including values from <see cref="T:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames"/>.</param>
+            <param name="subjectAlternativeNames">The subject alternative names (SANs) of the certificate.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="issuerName"/> is empty or <paramref name="subjectAlternativeNames"/> contains empty collection properties.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="subjectAlternativeNames"/> or <paramref name="issuerName"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicy.#ctor(System.String,System.String,Azure.Security.KeyVault.Certificates.SubjectAlternativeNames)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> class.
+            </summary>
+            <param name="issuerName">The name of an issuer for the certificate, including values from <see cref="T:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames"/>.</param>
+            <param name="subject">The subject name of the certificate, such as "CN=contoso.com".</param>
+            <param name="subjectAlternativeNames">The subject alternative names (SANs) of the certificate.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="subject"/> or <paramref name="issuerName"/> is empty, or <paramref name="subjectAlternativeNames"/> contains empty collection properties.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="subject"/>, <paramref name="issuerName"/>, or <paramref name="subjectAlternativeNames"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.Default">
+            <summary>
+            Gets a new <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/> suitable for self-signed certificate requests.
+            You should change the <see cref="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.Subject"/> before passing this policy to create a certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.KeyType">
+            <summary>
+            Gets or sets the type of backing key to be generated when issuing new certificates.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.ReuseKey">
+            <summary>
+            Gets or sets a value indicating whether the certificate key should be reused when rotating the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.Exportable">
+            <summary>
+            Gets or sets a value indicating whether the certificate key is exportable from the vault or secure certificate store.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.KeyCurveName">
+            <summary>
+            Gets or sets the curve which back an Elliptic Curve (EC) key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.KeySize">
+            <summary>
+            Gets or sets the size of the RSA key. The value must be a valid RSA key length such as 2048 or 4092.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.Subject">
+            <summary>
+            Gets the subject name of a certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.SubjectAlternativeNames">
+            <summary>
+            Gets the subject alternative names (SANs) of a certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.IssuerName">
+            <summary>
+            Gets the name of an issuer for a certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.ContentType">
+            <summary>
+            Gets or sets the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContentType"/> of the certificate when downloaded from GetSecret.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.CertificateType">
+            <summary>
+            Gets or sets the certificate type of a certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.CertificateTransparency">
+            <summary>
+            Gets or sets a value indicating whether a certificate should be published to the certificate transparency list when created.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.ValidityInMonths">
+            <summary>
+            Gets or sets the validity period for a certificate in months.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the certificate is currently enabled. If null, the server default will be used.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.UpdatedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate was updated.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.CreatedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate was created.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.KeyUsage">
+            <summary>
+            Gets the allowed usages for the key of the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.EnhancedKeyUsage">
+            <summary>
+            Gets the allowed enhanced key usages (EKUs) of the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicy.LifetimeActions">
+            <summary>
+            Gets the actions to be executed at specified times in the certificates lifetime.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction">
+            <summary>
+            An action that will be executed.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> structure.
+            </summary>
+            <param name="value">The string value of the instance.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.AutoRenew">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> that will auto-renew a certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.EmailContacts">
+            <summary>
+            Gets a <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> action that will email certificate contacts.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.op_Equality(Azure.Security.KeyVault.Certificates.CertificatePolicyAction,Azure.Security.KeyVault.Certificates.CertificatePolicyAction)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> values are the same.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are the same; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.op_Inequality(Azure.Security.KeyVault.Certificates.CertificatePolicyAction,Azure.Security.KeyVault.Certificates.CertificatePolicyAction)">
+            <summary>
+            Determines if two <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> values are different.
+            </summary>
+            <param name="left">The first <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> to compare.</param>
+            <param name="right">The second <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> to compare.</param>
+            <returns>True if <paramref name="left"/> and <paramref name="right"/> are different; otherwise, false.</returns>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.op_Implicit(System.String)~Azure.Security.KeyVault.Certificates.CertificatePolicyAction">
+            <summary>
+            Converts a string to a <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/>.
+            </summary>
+            <param name="value">The string value to convert.</param>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.Equals(Azure.Security.KeyVault.Certificates.CertificatePolicyAction)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificatePolicyAction.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.CertificateProperties">
+            <summary>
+            <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> contains identity and other basic properties of a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateProperties.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> class.
+            </summary>
+            <param name="name">The name of the certificate.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.CertificateProperties.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateProperties"/> class.
+            </summary>
+            <param name="id">The identifier of the certificate.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="id"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Id">
+            <summary>
+            Gets the identifier of the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Name">
+            <summary>
+            Gets the name of the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.VaultUri">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> of the vault in which the certificate is stored.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Version">
+            <summary>
+            Gets the version of the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.X509Thumbprint">
+            <summary>
+            Gets the digital thumbprint of the certificate which can be used to uniquely identify it.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Tags">
+            <summary>
+            Gets the tags applied to the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the certificate is currently enabled. If null, the server default will be used.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.NotBefore">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate will be valid.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.ExpiresOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate will expire.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.CreatedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate was created.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.UpdatedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate was updated.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.RecoverableDays">
+            <summary>
+            Gets the number of days a certificate is retained before being deleted for a soft delete-enabled Key Vault.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.CertificateProperties.RecoveryLevel">
+            <summary>
+            Gets the recovery level currently in effect for certificates in the Key Vault.
+            If <c>Purgeable</c>, the certificates can be permanently deleted by an authorized user;
+            otherwise, only the service can purge the certificates at the end of the retention interval.
+            </summary>
+            <value>Possible values include <c>Purgeable</c>, <c>Recoverable+Purgeable</c>, <c>Recoverable</c>, and <c>Recoverable+ProtectedSubscription</c>.</value>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation">
+            <summary>
+            A long-running operation for <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartDeleteCertificate(System.String,System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartDeleteCertificateAsync(System.String,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.Value">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/>.
+            You should await <see cref="M:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.WaitForCompletionAsync(System.Threading.CancellationToken)"/> before attempting to purge or recover a certificate in this pending state.
+            </summary>
+            <remarks>
+            Azure Key Vault will return a <see cref="T:Azure.Security.KeyVault.Certificates.DeletedCertificate"/> immediately but may take time to actually delete the certificate if soft-delete is enabled.
+            </remarks>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.HasCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.HasValue">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.GetRawResponse">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.UpdateStatus(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.UpdateStatusAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.WaitForCompletionAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.DeleteCertificateOperation.WaitForCompletionAsync(System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.DeletedCertificate">
+            <summary>
+            A deleted <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.DeletedCertificate.RecoveryId">
+            <summary>
+            Gets the identifier of the deleted certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.DeletedCertificate.DeletedOn">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> indicating when the certificate was deleted.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.DeletedCertificate.ScheduledPurgeDate">
+            <summary>
+            Gets a <see cref="T:System.DateTimeOffset"/> for when the deleted certificate will be purged.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.ImportCertificateOptions">
+            <summary>
+            Options for a certificate to be imported into Azure Key Vault.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.#ctor(System.String,System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.ImportCertificateOptions"/> class.
+            </summary>
+            <param name="name">A name for the imported certificate.</param>
+            <param name="certificate">The PFX or ASCII PEM formatted value of the certificate containing both the X.509 certificates and the private key.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="certificate"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Name">
+            <summary>
+            Gets the name of the certificate to import.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Certificate">
+            <summary>
+            Gets the PFX or PEM formatted value of the certificate containing both the X.509 certificates and the private key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Policy">
+            <summary>
+            Gets the policy which governs the lifecycle of the imported certificate and its properties when it is rotated.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Password">
+            <summary>
+            Gets or sets the password protecting the certificate specified in the Value.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the merged certificate should be enabled. If null, the server default will be used.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.ImportCertificateOptions.Tags">
+            <summary>
+            Gets the tags to be applied to the imported certificate. Although this collection cannot be set, it can be modified
+             or initialized with a <see href="https://docs.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/how-to-initialize-a-dictionary-with-a-collection-initializer">collection initializer</see>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.IssuerProperties">
+            <summary>
+            Properties of a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateIssuer"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.IssuerProperties.Id">
+            <summary>
+            Gets the identifier of the certificate issuer.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.IssuerProperties.Name">
+            <summary>
+            Gets the name of the certificate issuer.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.IssuerProperties.Provider">
+            <summary>
+            Gets or sets the provider name of the certificate issuer.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate">
+            <summary>
+            An Azure Key Vault certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Id">
+            <summary>
+            Gets the identifier of the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Name">
+            <summary>
+            Gets the name of the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.KeyId">
+            <summary>
+            Gets the identifier of the Key Vault Key backing the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.SecretId">
+            <summary>
+            Gets the identifier of the Key Vault Secret which contains the PEM of PFX formatted content of the certificate and its private key.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Properties">
+            <summary>
+            Gets additional properties of the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificate.Cer">
+            <summary>
+            Gets the CER formatted public X509 certificate.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy">
+            <summary>
+            A <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> along with its <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.KeyVaultCertificateWithPolicy.Policy">
+            <summary>
+            Gets the current policy for the certificate.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.LifetimeAction">
+            <summary>
+            An action to be executed at a prescribed time in a certificates lifecycle
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.LifetimeAction.#ctor(Azure.Security.KeyVault.Certificates.CertificatePolicyAction)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.LifetimeAction"/> class.
+            </summary>
+            <param name="action">The <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> to be performed.</param>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.LifetimeAction.DaysBeforeExpiry">
+            <summary>
+            Gets or sets the action should be performed the specified number of days before the certificate will expire.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.LifetimeAction.LifetimePercentage">
+            <summary>
+            Gets or sets the action should be performed when the certificate reaches the specified percentage of its lifetime. Valid values include 1-99.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.LifetimeAction.Action">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Certificates.CertificatePolicyAction"/> to be performed.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.MergeCertificateOptions">
+            <summary>
+            Options for certificates to be merged into Azure Key Vault.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.MergeCertificateOptions.#ctor(System.String,System.Collections.Generic.IEnumerable{System.Byte[]})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.MergeCertificateOptions"/> class.
+            </summary>
+            <param name="name">The name of the certificate.</param>
+            <param name="x509Certificates">The certificate or certificate chain to merge.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="name"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="name"/> or <paramref name="x509Certificates"/> is null.</exception>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.MergeCertificateOptions.Name">
+            <summary>
+            Gets the name of the certificate.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.MergeCertificateOptions.X509Certificates">
+            <summary>
+            Gets the certificate or certificate chain to merge.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.MergeCertificateOptions.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the merged certificate should be enabled. If null, the server default will be used.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.MergeCertificateOptions.Tags">
+            <summary>
+            Gets the tags to be applied to the merged certificate. Although this collection cannot be set, it can be modified
+             or initialized with a <see href="https://docs.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/how-to-initialize-a-dictionary-with-a-collection-initializer">collection initializer</see>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation">
+            <summary>
+            A long-running operation for <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartRecoverDeletedCertificate(System.String,System.Threading.CancellationToken)"/> or <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.StartRecoverDeletedCertificateAsync(System.String,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.Value">
+            <summary>
+            Gets the <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> of the certificate being recovered.
+            You should await <see cref="M:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.WaitForCompletionAsync(System.Threading.CancellationToken)"/> before attempting to use a certificate in this pending state.
+            </summary>
+            <remarks>
+            Azure Key Vault will return a <see cref="T:Azure.Security.KeyVault.Certificates.KeyVaultCertificate"/> immediately but may take time to actually recover the deleted certificate if soft-delete is enabled.
+            </remarks>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.HasCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.HasValue">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.GetRawResponse">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.UpdateStatus(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.UpdateStatusAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.WaitForCompletionAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.RecoverDeletedCertificateOperation.WaitForCompletionAsync(System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.SubjectAlternativeNames">
+            <summary>
+            A collection of subject alternative names (SANs) for a X.509 certificate. SANs can be DNS entries, emails, or unique principal names.
+            </summary>
+        </member>
+        <member name="M:Azure.Security.KeyVault.Certificates.SubjectAlternativeNames.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Azure.Security.KeyVault.Certificates.CertificateContact"/> class.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.SubjectAlternativeNames.DnsNames">
+            <summary>
+            Gets a collection of DNS names.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.SubjectAlternativeNames.Emails">
+            <summary>
+            Gets a collection of email addresses.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.Certificates.SubjectAlternativeNames.UserPrincipalNames">
+            <summary>
+            Gets a collection of user principal names (UPNs).
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames">
+            <summary>
+            Well known issuer names you can pass to <see cref="M:Azure.Security.KeyVault.Certificates.CertificatePolicy.#ctor(System.String,System.String)"/>, <see cref="M:Azure.Security.KeyVault.Certificates.CertificatePolicy.#ctor(System.String,Azure.Security.KeyVault.Certificates.SubjectAlternativeNames)"/>, or <see cref="M:Azure.Security.KeyVault.Certificates.CertificatePolicy.#ctor(System.String,System.String,Azure.Security.KeyVault.Certificates.SubjectAlternativeNames)"/>.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames.Self">
+            <summary>
+            Create a self-issued certificate.
+            </summary>
+        </member>
+        <member name="F:Azure.Security.KeyVault.Certificates.WellKnownIssuerNames.Unknown">
+            <summary>
+            Creates a certificate that requires merging an external X.509 certificate using <see cref="M:Azure.Security.KeyVault.Certificates.CertificateClient.MergeCertificateAsync(Azure.Security.KeyVault.Certificates.MergeCertificateOptions,System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="T:Azure.Security.KeyVault.KeyVaultPage`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Azure.Security.KeyVault.KeyVaultPage`1.Items">
+            <summary>
+            Gets the content items.
+            </summary>
+        </member>
+        <member name="P:Azure.Security.KeyVault.KeyVaultPage`1.NextLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="T:Azure.Core.HashCodeBuilder">
+            <summary>
+            Copied from https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/HashCode.cs.
+            </summary>
+        </member>
+        <member name="T:Azure.Core.AzureResourceProviderNamespaceAttribute">
+            <summary>
+            This attribute should be set on all client assemblies with value of one of the resource providers
+            from the https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/azure-services-resource-providers list.
+            </summary>
+        </member>
+        <member name="T:Azure.Core.Argument">
+            <summary>
+            Argument validation.
+            </summary>
+            <remarks>
+              <para>This class should be shared via source using Azure.Core.props and contain only common argument validation.
+                It is declared partial so that you can use the same familiar class name but extend it with project-specific validation.
+                To extend the functionality of this class, just declare your own partial <see cref="T:Azure.Core.Argument"/> class with project-specific methods.
+              </para>
+              <para>
+                Be sure to document exceptions thrown by these methods on your public methods.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNull``1(``0,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is null.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNull``1(System.Nullable{``0},System.String)">
+            <summary>
+            Throws if <paramref name="value"/> has not been initialized.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> has not been initialized.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is null or an empty collection.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> is an empty collection.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNullOrEmpty(System.String,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is null or an empty string.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> is an empty string.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotNullOrWhiteSpace(System.String,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is null, an empty string, or consists only of white-space characters.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> is an empty string or consists only of white-space characters.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value"/> is null.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertNotDefault``1(``0@,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is the default value for type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of structure to validate which implements <see cref="T:System.IEquatable`1"/>.</typeparam>
+            <param name="value">The value to validate.</param>
+            <param name="name">The name of the parameter.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="value"/> is the default value for type <typeparamref name="T"/>.</exception>
+        </member>
+        <member name="M:Azure.Core.Argument.AssertInRange``1(``0,``0,``0,System.String)">
+            <summary>
+            Throws if <paramref name="value"/> is less than the <paramref name="minimum"/> or greater than the <paramref name="maximum"/>.
+            </summary>
+            <typeparam name="T">The type of to validate which implements <see cref="T:System.IComparable`1"/>.</typeparam>
+            <param name="value">The value to validate.</param>
+            <param name="minimum">The minimum value to compare.</param>
+            <param name="maximum">The maximum value to compare.</param>
+            <param name="name">The name of the parameter.</param>
+        </member>
+        <member name="T:Azure.Core.ArrayBufferWriter`1">
+            <summary>
+            Represents a heap-based, array-backed output sink into which <typeparam name="T"/> data can be written.
+            </summary>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.#ctor">
+            <summary>
+            Creates an instance of an <see cref="T:Azure.Core.ArrayBufferWriter`1"/>, in which data can be written to,
+            with the default initial capacity.
+            </summary>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.#ctor(System.Int32)">
+            <summary>
+            Creates an instance of an <see cref="T:Azure.Core.ArrayBufferWriter`1"/>, in which data can be written to,
+            with an initial capacity specified.
+            </summary>
+            <param name="initialCapacity">The minimum capacity with which to initialize the underlying buffer.</param>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="initialCapacity"/> is not positive (i.e. less than or equal to 0).
+            </exception>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.WrittenMemory">
+            <summary>
+            Returns the data written to the underlying buffer so far, as a <see cref="T:System.ReadOnlyMemory`1"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.WrittenSpan">
+            <summary>
+            Returns the data written to the underlying buffer so far, as a <see cref="T:System.ReadOnlySpan`1"/>.
+            </summary>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.WrittenCount">
+            <summary>
+            Returns the amount of data written to the underlying buffer so far.
+            </summary>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.Capacity">
+            <summary>
+            Returns the total amount of space within the underlying buffer.
+            </summary>
+        </member>
+        <member name="P:Azure.Core.ArrayBufferWriter`1.FreeCapacity">
+            <summary>
+            Returns the amount of space available that can still be written into without forcing the underlying buffer to grow.
+            </summary>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.Clear">
+            <summary>
+            Clears the data written to the underlying buffer.
+            </summary>
+            <remarks>
+            You must clear the <see cref="T:Azure.Core.ArrayBufferWriter`1"/> before trying to re-use it.
+            </remarks>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.Advance(System.Int32)">
+            <summary>
+            Notifies <see cref="T:System.Buffers.IBufferWriter`1"/> that <paramref name="count"/> amount of data was written to the output <see cref="T:System.Span`1"/>/<see cref="T:System.Memory`1"/>.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="count"/> is negative.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Thrown when attempting to advance past the end of the underlying buffer.
+            </exception>
+            <remarks>
+            You must request a new buffer after calling Advance to continue writing more data and cannot write to a previously acquired buffer.
+            </remarks>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.GetMemory(System.Int32)">
+            <summary>
+            Returns a <see cref="T:System.Memory`1"/> to write to that is at least the requested length (specified by <paramref name="sizeHint"/>).
+            If no <paramref name="sizeHint"/> is provided (or it's equal to <code>0</code>), some non-empty buffer is returned.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="sizeHint"/> is negative.
+            </exception>
+            <remarks>
+            This will never return an empty <see cref="T:System.Memory`1"/>.
+            </remarks>
+            <remarks>
+            There is no guarantee that successive calls will return the same buffer or the same-sized buffer.
+            </remarks>
+            <remarks>
+            You must request a new buffer after calling Advance to continue writing more data and cannot write to a previously acquired buffer.
+            </remarks>
+        </member>
+        <member name="M:Azure.Core.ArrayBufferWriter`1.GetSpan(System.Int32)">
+            <summary>
+            Returns a <see cref="T:System.Span`1"/> to write to that is at least the requested length (specified by <paramref name="sizeHint"/>).
+            If no <paramref name="sizeHint"/> is provided (or it's equal to <code>0</code>), some non-empty buffer is returned.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            Thrown when <paramref name="sizeHint"/> is negative.
+            </exception>
+            <remarks>
+            This will never return an empty <see cref="T:System.Span`1"/>.
+            </remarks>
+            <remarks>
+            There is no guarantee that successive calls will return the same buffer or the same-sized buffer.
+            </remarks>
+            <remarks>
+            You must request a new buffer after calling Advance to continue writing more data and cannot write to a previously acquired buffer.
+            </remarks>
+        </member>
+        <member name="T:Azure.Core.Pipeline.ActivityExtensions">
+            <summary>
+            HACK HACK HACK. Some runtime environments like Azure.Functions downgrade System.Diagnostic.DiagnosticSource package version causing method not found exceptions in customer apps
+            This type is a temporary workaround to avoid the issue.
+            </summary>
+        </member>
+        <member name="T:Azure.Core.Pipeline.TaskExtensions.Enumerable`1">
+            <summary>
+            Both <see cref="T:Azure.Core.Pipeline.TaskExtensions.Enumerable`1"/> and <see cref="T:Azure.Core.Pipeline.TaskExtensions.Enumerator`1"/> are defined as public structs so that foreach can use duck typing
+            to call <see cref="M:Azure.Core.Pipeline.TaskExtensions.Enumerable`1.GetEnumerator"/> and avoid heap memory allocation.
+            Please don't delete this method and don't make these types private.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Microsoft.Extensions.Azure.CertificateClientBuilderExtensions">
+            <summary>
+            Extension methods to add <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient"/> to clients builder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Azure.CertificateClientBuilderExtensions.AddCertificateClient``1(``0,System.Uri)">
+            <summary>
+            Registers a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient"/> instance with the provided <paramref name="vaultUri"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.Azure.CertificateClientBuilderExtensions.AddCertificateClient``2(``0,``1)">
+            <summary>
+            Registers a <see cref="T:Azure.Security.KeyVault.Certificates.CertificateClient"/> instance with connection options loaded from the provided <paramref name="configuration"/> instance.
+            </summary>
+        </member>
+    </members>
+</doc>

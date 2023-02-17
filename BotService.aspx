@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BotService.aspx.cs"  Inherits="TomTom_Info_Page.BotService" %>

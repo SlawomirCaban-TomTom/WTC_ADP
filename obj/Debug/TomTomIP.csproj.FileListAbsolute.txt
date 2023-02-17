@@ -1,0 +1,7 @@
+D:\Documents and Settings\swierczy\My Documents\Visual Studio 2008\Projects\TomTom Info Page\TomTom Info Page\bin\TomTomIP.dll
+D:\Documents and Settings\swierczy\My Documents\Visual Studio 2008\Projects\TomTom Info Page\TomTom Info Page\bin\TomTomIP.pdb
+D:\Documents and Settings\swierczy\My Documents\Visual Studio 2008\Projects\TomTom Info Page\TomTom Info Page\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents and Settings\swierczy\My Documents\Visual Studio 2008\Projects\TomTom Info Page\TomTom Info Page\obj\Debug\TomTomIP.dll
+D:\Documents and Settings\swierczy\My Documents\Visual Studio 2008\Projects\TomTom Info Page\TomTom Info Page\obj\Debug\TomTomIP.pdb
+D:\Documents and Settings\swierczy\My Documents\Visual Studio 2008\Projects\TomTom Info Page\TomTom Info Page\obj\Debug\TomTom_Info_Page.Properties.Resources.resources
+D:\Documents and Settings\swierczy\My Documents\Visual Studio 2008\Projects\TomTom Info Page\TomTom Info Page\obj\Debug\TomTomIP.csproj.GenerateResource.Cache

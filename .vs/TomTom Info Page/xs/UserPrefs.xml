@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{A228FE3E-7B6A-49F2-AD43-E3C2A964B46D}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WTC/history.aspx.cs">
+    <Files>
+      <File FileName="WTC/wtc_main.aspx.cs" Line="20" Column="1" />
+      <File FileName="WTC/wtc_main.aspx" />
+      <File FileName="Master_Page.Master" />
+      <File FileName="WTC/edit_project.aspx" />
+      <File FileName="WTC/project_details.aspx" />
+      <File FileName="WTC/project_details.aspx.cs" />
+      <File FileName="WTC/history.aspx" Line="1" Column="1" />
+      <File FileName="WTC/history.aspx.cs" Line="156" Column="49" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TomTom Info Page" expanded="True">
+            <Node name="ADP Info Page " expanded="True">
+              <Node name="img" expanded="True" />
+              <Node name="WTC" expanded="True">
+                <Node name="adp_activity.aspx" expanded="True" />
+                <Node name="back_dated_entry.aspx" expanded="True" />
+                <Node name="history.aspx" expanded="True">
+                  <Node name="history.aspx.cs" selected="True" />
+                </Node>
+                <Node name="new_project.aspx" expanded="True" />
+                <Node name="project_details.aspx" expanded="True" />
+                <Node name="wtc_main.aspx" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ADP_220Info_220Page_220 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

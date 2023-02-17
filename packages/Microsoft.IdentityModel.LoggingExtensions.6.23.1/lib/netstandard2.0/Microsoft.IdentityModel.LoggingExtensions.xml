@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.IdentityModel.LoggingExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter">
+            <summary>
+            The default implementation of <see cref="T:Microsoft.IdentityModel.Abstractions.IIdentityLogger"/> that provides a wrapper around <see cref="T:Microsoft.Extensions.Logging.ILogger"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter.#ctor(Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Instantiates <see cref="T:Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter"/> using <paramref name="logger"/>.
+            </summary>
+            <param name="logger">An <see cref="T:Microsoft.Extensions.Logging.ILogger"/> instance to which identity log messages are written.</param>
+        </member>
+        <member name="M:Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter.IsEnabled(Microsoft.IdentityModel.Abstractions.EventLogLevel)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.IdentityModel.LoggingExtensions.IdentityLoggerAdapter.Log(Microsoft.IdentityModel.Abstractions.LogEntry)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

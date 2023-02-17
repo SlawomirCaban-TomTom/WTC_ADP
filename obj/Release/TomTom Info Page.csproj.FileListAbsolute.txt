@@ -1,0 +1,104 @@
+K:\bin\TomTomIP.dll
+K:\bin\TomTomIP.pdb
+K:\bin\Microsoft.Office.Interop.Excel.dll
+K:\bin\office.dll
+K:\bin\Microsoft.Vbe.Interop.dll
+K:\obj\Release\ResolveAssemblyReference.cache
+K:\obj\Release\TomTom_Info_Page.Properties.Resources.resources
+K:\obj\Release\TomTom Info Page.csproj.GenerateResource.Cache
+K:\obj\Release\TomTomIP.dll
+K:\obj\Release\TomTomIP.pdb
+\\plsrvwp-www01\c$\wwwroot\bin\TomTomIP.dll
+\\plsrvwp-www01\c$\wwwroot\bin\TomTomIP.pdb
+\\plsrvwp-www01\c$\wwwroot\obj\Release\TomTomIP.dll
+\\plsrvwp-www01\c$\wwwroot\obj\Release\TomTomIP.pdb
+C:\wwwroot\bin\TomTomIP.dll
+C:\wwwroot\bin\TomTomIP.pdb
+C:\wwwroot\bin\Microsoft.Office.Interop.Excel.dll
+C:\wwwroot\bin\office.dll
+C:\wwwroot\bin\Microsoft.Vbe.Interop.dll
+C:\wwwroot\bin\AjaxControlToolkit.pdb
+C:\wwwroot\bin\ar\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\cs\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\de\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\es\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\fr\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\he\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\hi\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\it\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\ja\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\ko\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\nl\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\pt\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\ru\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\tr-TR\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\zh-CHS\AjaxControlToolkit.resources.dll
+C:\wwwroot\bin\zh-CHT\AjaxControlToolkit.resources.dll
+C:\wwwroot\obj\Release\ResolveAssemblyReference.cache
+C:\wwwroot\obj\Release\TomTom_Info_Page.Properties.Resources.resources
+C:\wwwroot\obj\Release\TomTom Info Page.csproj.GenerateResource.Cache
+C:\wwwroot\obj\Release\TomTomIP.dll
+C:\wwwroot\obj\Release\TomTomIP.pdb
+I:\bin\TomTomIP.dll
+I:\bin\TomTomIP.pdb
+I:\obj\Release\TomTomIP.dll
+I:\obj\Release\TomTomIP.pdb
+I:\bin\office.dll
+I:\bin\Microsoft.Vbe.Interop.dll
+I:\bin\Microsoft.Office.Interop.Excel.xml
+I:\bin\office.xml
+I:\obj\Release\TomTom Info Page.csprojResolveAssemblyReference.cache
+I:\bin\Interop.ADOX.dll
+I:\obj\Release\Interop.ADOX.dll
+I:\obj\Release\TomTom Info Page.csproj.ResolveComReference.cache
+U:\bin\TomTomIP.dll.config
+U:\bin\TomTomIP.dll
+U:\bin\TomTomIP.pdb
+U:\bin\DayPilot.dll
+U:\bin\office.dll
+U:\bin\Microsoft.Vbe.Interop.dll
+U:\bin\Microsoft.Office.Interop.Excel.xml
+U:\bin\office.xml
+U:\bin\Interop.ADOX.dll
+U:\obj\Release\TomTom Info Page.csprojResolveAssemblyReference.cache
+U:\obj\Release\Interop.ADOX.dll
+U:\obj\Release\TomTom Info Page.csproj.ResolveComReference.cache
+U:\obj\Release\TomTomIP.dll
+U:\obj\Release\TomTomIP.pdb
+I:\bin\DayPilot.dll
+\\plsrvwp-www01\c$\wwwroot\bin\DayPilot.dll
+\\plsrvwp-www01\c$\wwwroot\bin\Interop.ADOX.dll
+\\plsrvwp-www01\c$\wwwroot\obj\Release\Interop.ADOX.dll
+\\plsrvwp-www01\c$\wwwroot\obj\Release\TomTom Info Page.csproj.ResolveComReference.cache
+\\plsrvwp-www01\c$\wwwroot\bin\Oracle.DataAccess.dll
+Z:\bin\TomTomIP.dll
+Z:\bin\TomTomIP.pdb
+Z:\bin\DayPilot.dll
+Z:\bin\Interop.ADOX.dll
+Z:\obj\Release\Interop.ADOX.dll
+Z:\obj\Release\TomTom Info Page.csproj.ResolveComReference.cache
+Z:\obj\Release\TomTomIP.dll
+Z:\obj\Release\TomTomIP.pdb
+T:\wwwroot\bin\TomTomIP.dll
+T:\wwwroot\bin\TomTomIP.pdb
+T:\wwwroot\bin\DayPilot.dll
+T:\wwwroot\bin\Oracle.DataAccess.dll
+T:\wwwroot\bin\Interop.ADOX.dll
+T:\wwwroot\obj\Release\Interop.ADOX.dll
+T:\wwwroot\obj\Release\TomTom Info Page.csproj.ResolveComReference.cache
+T:\wwwroot\obj\Release\TomTomIP.dll
+T:\wwwroot\obj\Release\TomTomIP.pdb
+\\plsrvwp-www01\c$\wwwroot\obj\Release\TomTom Info Page.csprojResolveAssemblyReference.cache
+T:\wwwroot\obj\Release\TomTom Info Page.csprojResolveAssemblyReference.cache
+Z:\obj\Release\TomTom Info Page.csprojResolveAssemblyReference.cache
+\\plsrvwp-sql03\c$\infopage\bin\TomTomIP.dll
+\\plsrvwp-sql03\c$\infopage\bin\TomTomIP.pdb
+\\plsrvwp-sql03\c$\infopage\bin\System.Web.DataVisualization.dll
+\\plsrvwp-sql03\c$\infopage\obj\Release\TomTom Info Page.csprojResolveAssemblyReference.cache
+\\plsrvwp-sql03\c$\infopage\obj\Release\Interop.ADOX.dll
+\\plsrvwp-sql03\c$\infopage\obj\Release\TomTom Info Page.csproj.ResolveComReference.cache
+\\plsrvwp-sql03\c$\infopage\obj\Release\TomTomIP.dll
+\\plsrvwp-sql03\c$\infopage\obj\Release\TomTomIP.pdb
+\\plsrvwp-sql03\c$\infopage\bin\Newtonsoft.Json.dll
+\\plsrvwp-sql03\c$\infopage\bin\Newtonsoft.Json.pdb
+\\plsrvwp-sql03\c$\infopage\bin\Newtonsoft.Json.xml
